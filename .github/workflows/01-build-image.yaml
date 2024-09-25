@@ -38,7 +38,7 @@ jobs:
 
       - name: Build an image from Dockerfile
         env:
-          DOCKER_BUILDKIT: 1
+          DOCKER_BUILDKIT: 0
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/container-technologies:v${{ steps.calculate-version.outputs.version-string }} .
 
