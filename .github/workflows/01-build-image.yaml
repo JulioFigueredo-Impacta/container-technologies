@@ -38,8 +38,10 @@ jobs:
 
       - name: Build an image from Dockerfile
         env:
-          DOCKER_BUILDKIT: 0
+          DOCKER_BUILDKIT: 1
         run: |
+          echo "${{ secrets.DOCKERHUB_USERNAME }}/container-technologies:v${{ steps.calculate-version.outputs.version-string }}"
+          ls -lah
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/container-technologies:v${{ steps.calculate-version.outputs.version-string }} .
 
       - name: Run Trivy vulnerability scanner
